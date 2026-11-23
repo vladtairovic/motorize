@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/barlow-condensed/700.css';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --color-indigo: #1e2a5a;
+  --color-indigo-700: #2a3a78;
+  --color-lavado: #3d5a98;
+  --color-lavado-100: #e3e8f4;
+  --color-refletivo: #f2c200;
+  --color-refletivo-100: #fff4c2;
+  --color-serie2: #d9a300;
+  --color-asfalto: #22252b;
+  --color-cinza: #5d6370;
+  --color-linha: #dfe2e8;
+  --color-papel: #f3f4f7;
+  --color-ok: #1f7a4f;
+  --color-ok-100: #dcf1e6;
+  --color-alerta: #b4561a;
+  --color-alerta-100: #fbe7d6;
+  --color-erro: #b3261e;
+  --color-erro-100: #f9dedc;
+  --font-sans: 'Barlow', system-ui, sans-serif;
+  --font-cond: 'Barlow Condensed', 'Barlow', sans-serif;
+}
+
+body { @apply bg-papel text-asfalto font-sans antialiased; font-size: 15px; }
+:focus-visible { outline: 3px solid var(--color-refletivo); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  min-height: 40px;
+}
+
+@layer components {
+  .btn-primario { @apply btn bg-indigo text-white hover:bg-indigo-700; }
+  .btn-secundario { @apply btn bg-white text-indigo ring-1 ring-linha hover:ring-indigo/40; }
+  .btn-ok { @apply btn bg-ok text-white hover:brightness-110; }
+  .btn-perigo { @apply btn bg-erro text-white hover:brightness-110; }
+  .btn-alerta { @apply btn bg-alerta text-white hover:brightness-110; }
+  .entrada { @apply w-full rounded-lg border border-linha bg-white px-3 focus:border-lavado focus:outline-none focus:ring-2 focus:ring-lavado/20; min-height: 40px; }
+  .rotulo { @apply mb-1 block text-sm font-semibold; }
+  .painel { @apply rounded-xl bg-white ring-1 ring-linha; }
+  .tabela { @apply w-full text-left; }
+  .tabela th { @apply border-b border-linha px-4 py-2.5 text-[13px] font-semibold text-cinza; }
+  .tabela td { @apply border-b border-linha/70 px-4 py-3 align-middle; }
+  .tabela tbody tr { @apply hover:bg-papel/70; }
+  .denim {
+    background-color: var(--color-indigo);
+    background-image:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px),
+      repeating-linear-gradient(45deg, rgba(0,0,0,.08) 0 1px, transparent 1px 4px);
+  }
+}

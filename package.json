@@ -1,0 +1,25 @@
+{
+  "name": "motorize",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MOTORIZE — Plataforma de cadastro e credenciamento de motociclistas de entrega (Toritama/PE)",
+  "workspaces": [
+    "apps/api",
+    "apps/app",
+    "apps/painel"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "setup": "node scripts/preparar.mjs && npm run db:migrate -w apps/api && npm run db:seed -w apps/api",
+    "dev": "concurrently -n api,app,painel -c blue,yellow,magenta \"npm run dev -w apps/api\" \"npm run dev -w apps/app\" \"npm run dev -w apps/painel\"",
+    "build": "npm run build -w apps/api && npm run build -w apps/app && npm run build -w apps/painel",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=22.9"
+  }
+}
