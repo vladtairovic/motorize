@@ -50,7 +50,7 @@ export function MinhaConta() {
       <main className="flex flex-col gap-4 p-4">
         {p && (
           <section className="cartao text-[15px]">
-            <p className="font-cond text-2xl font-bold text-indigo">{p.entregador.nome}</p>
+            <p className="font-cond text-2xl font-bold text-ink">{p.entregador.nome}</p>
             <p className="text-cinza">CPF {mascaraCpf(p.entregador.cpf)}</p>
             <p className="text-cinza">{mascaraTel(p.entregador.telefone)}</p>
           </section>
@@ -58,7 +58,7 @@ export function MinhaConta() {
         {erro && <Aviso tom="erro">{erro}</Aviso>}
 
         <section className="cartao flex flex-col gap-3">
-          <h2 className="font-cond text-xl font-bold text-indigo">Seus dados, seus direitos</h2>
+          <h2 className="font-cond text-xl font-bold text-ink">Seus dados, seus direitos</h2>
           <p className="text-[15px] text-cinza">
             A Prefeitura só usa seus dados para o cadastro, a credencial e estatísticas sem identificação. Cada acesso de servidor aos seus documentos fica registrado.
           </p>

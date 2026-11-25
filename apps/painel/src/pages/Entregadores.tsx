@@ -55,7 +55,7 @@ export function Entregadores() {
                 <tbody>
                   {data.itens.map((e: any) => (
                     <tr key={e.id}>
-                      <td>{analista ? <Link to={`/entregadores/${e.id}`} className="font-semibold text-indigo hover:underline">{e.nome}</Link> : <span className="font-medium">{e.nome}</span>}</td>
+                      <td>{analista ? <Link to={`/entregadores/${e.id}`} className="font-semibold text-ink hover:underline">{e.nome}</Link> : <span className="font-medium">{e.nome}</span>}</td>
                       <td>{e.bairro ?? '—'}</td>
                       <td>{ATIVIDADES[e.tipo_atividade] ?? '—'}</td>
                       <td><div className="flex items-center gap-2"><Placa placa={e.placa} /><span className="text-[13px] text-cinza">{e.modelo}</span></div></td>

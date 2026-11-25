@@ -74,8 +74,8 @@ export function Analise() {
     <>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <Link to="/solicitacoes" className="text-sm font-semibold text-lavado hover:underline">‹ Voltar para a fila</Link>
-          <h1 className="mt-1 flex flex-wrap items-center gap-3 font-cond text-[32px] font-bold leading-none text-indigo">
+          <Link to="/solicitacoes" className="text-sm font-semibold text-motor hover:underline">‹ Voltar para a fila</Link>
+          <h1 className="mt-1 flex flex-wrap items-center gap-3 font-cond text-[32px] font-bold leading-none text-ink">
             {s.protocolo} <Status s={s.status} />
           </h1>
           <p className="mt-1 text-cinza">
@@ -93,7 +93,7 @@ export function Analise() {
           <p className="font-semibold text-ok">
             {resultado.status === 'APROVADA' ? `Aprovada. Credencial ${resultado.credencial.numero} emitida, válida até ${dataBR(resultado.credencial.validaAte)}.` : `Decisão registrada: ${STATUS_SOL[resultado.status].rotulo}. O entregador foi avisado no app.`}
           </p>
-          <button className="mt-1 text-sm font-semibold text-indigo hover:underline" onClick={() => nav('/solicitacoes')}>Ir para a próxima da fila</button>
+          <button className="mt-1 text-sm font-semibold text-ink hover:underline" onClick={() => nav('/solicitacoes')}>Ir para a próxima da fila</button>
         </div>
       )}
 
@@ -115,7 +115,7 @@ export function Analise() {
             </dl>
           </section>
           <section className="painel p-5">
-            <h3 className="mb-3 font-cond text-lg font-bold text-indigo">CNH</h3>
+            <h3 className="mb-3 font-cond text-lg font-bold text-ink">CNH</h3>
             <dl className="grid grid-cols-3 gap-3">
               <Dado r="Registro" v={e.cnhNumero} />
               <Dado r="Categoria" v={<span className={e.cnhCategoria?.includes('A') ? '' : 'text-erro'}>{e.cnhCategoria}</span>} />
@@ -123,7 +123,7 @@ export function Analise() {
             </dl>
           </section>
           <section className="painel p-5">
-            <h3 className="mb-3 font-cond text-lg font-bold text-indigo">Motocicleta</h3>
+            <h3 className="mb-3 font-cond text-lg font-bold text-ink">Motocicleta</h3>
             {m ? (
               <dl className="grid grid-cols-2 gap-3">
                 <Dado r="Placa" v={<Placa placa={m.placa} />} />
@@ -134,7 +134,7 @@ export function Analise() {
             ) : <p className="text-cinza">Não informada.</p>}
           </section>
           <section className="painel p-5">
-            <h3 className="mb-3 font-cond text-lg font-bold text-indigo">Histórico</h3>
+            <h3 className="mb-3 font-cond text-lg font-bold text-ink">Histórico</h3>
             <ol className="space-y-3 text-sm">
               {s.eventos.map((ev: any) => (
                 <li key={ev.id} className="border-l-2 border-linha pl-3">
@@ -156,10 +156,10 @@ export function Analise() {
             {Object.entries(DOCS).map(([t, nome]) => {
               const d = docs[t];
               const marca = !d ? '○' : d.status === 'ACEITO' ? '✓' : d.status === 'RECUSADO' ? '✕' : '•';
-              const cor = !d ? 'text-cinza' : d.status === 'ACEITO' ? 'text-ok' : d.status === 'RECUSADO' ? 'text-erro' : 'text-lavado';
+              const cor = !d ? 'text-cinza' : d.status === 'ACEITO' ? 'text-ok' : d.status === 'RECUSADO' ? 'text-erro' : 'text-motor';
               return (
                 <button key={t} role="tab" aria-selected={aberto === t} onClick={() => setAberto(t)}
-                  className={`flex items-center gap-2 whitespace-nowrap border-b-[3px] px-4 py-3 font-semibold ${aberto === t ? 'border-refletivo bg-papel/60 text-indigo' : 'border-transparent text-cinza'}`}>
+                  className={`flex items-center gap-2 whitespace-nowrap border-b-[3px] px-4 py-3 font-semibold ${aberto === t ? 'border-refletivo bg-papel/60 text-ink' : 'border-transparent text-cinza'}`}>
                   <span className={cor} aria-hidden>{marca}</span>{nome}
                 </button>
               );
@@ -170,7 +170,7 @@ export function Analise() {
               <>
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-sm text-cinza">
                   <span>Enviado {dataHoraBR(doc.criadoEm)} · {(doc.tamanho / 1024).toFixed(0)} KB · SHA-256 {doc.sha256.slice(0, 12)}…</span>
-                  <span className={`rounded-full px-2.5 py-0.5 text-[13px] font-semibold ${doc.status === 'ACEITO' ? 'bg-ok-100 text-ok' : doc.status === 'RECUSADO' ? 'bg-erro-100 text-erro' : 'bg-lavado-100 text-indigo'}`}>{doc.status === 'ACEITO' ? 'Aceito' : doc.status === 'RECUSADO' ? 'Recusado' : 'Aguardando avaliação'}</span>
+                  <span className={`rounded-full px-2.5 py-0.5 text-[13px] font-semibold ${doc.status === 'ACEITO' ? 'bg-ok-100 text-ok' : doc.status === 'RECUSADO' ? 'bg-erro-100 text-erro' : 'bg-neve text-ink'}`}>{doc.status === 'ACEITO' ? 'Aceito' : doc.status === 'RECUSADO' ? 'Recusado' : 'Aguardando avaliação'}</span>
                 </div>
                 <Visualizador doc={doc} />
                 {doc.motivoRecusa && <p className="mt-3 rounded-lg bg-erro-100 px-3 py-2 text-erro">Recusado: {doc.motivoRecusa}</p>}
@@ -181,7 +181,7 @@ export function Analise() {
                       <p className="mb-2 font-semibold">Por que recusar? O entregador vai ler este texto.</p>
                       <div className="mb-2 flex flex-wrap gap-2">
                         {MOTIVOS_RAPIDOS[doc.tipo]?.map((mr) => (
-                          <button key={mr} type="button" onClick={() => setMotivo(mr)} className={`rounded-full px-3 py-1 text-sm ring-1 ${motivo === mr ? 'bg-indigo text-white ring-indigo' : 'bg-white ring-linha'}`}>{mr}</button>
+                          <button key={mr} type="button" onClick={() => setMotivo(mr)} className={`rounded-full px-3 py-1 text-sm ring-1 ${motivo === mr ? 'bg-ink text-white ring-ink' : 'bg-white ring-linha'}`}>{mr}</button>
                         ))}
                       </div>
                       <textarea className="entrada min-h-20 py-2" value={motivo} onChange={(ev) => setMotivo(ev.target.value)} placeholder="Explique o que precisa ser corrigido" />

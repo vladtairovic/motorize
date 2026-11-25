@@ -10,7 +10,7 @@ export function Cabecalho({ titulo, sub, acoes }: { titulo: string; sub?: ReactN
   return (
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
       <div>
-        <h1 className="font-cond text-[32px] font-bold leading-none text-indigo">{titulo}</h1>
+        <h1 className="font-cond text-[32px] font-bold leading-none text-ink">{titulo}</h1>
         {sub && <p className="mt-1.5 text-cinza">{sub}</p>}
       </div>
       {acoes && <div className="flex flex-wrap gap-2">{acoes}</div>}
@@ -25,7 +25,7 @@ export function Erro({ children }: { children: ReactNode }) {
 export function Carregando() {
   return (
     <div className="grid min-h-60 place-items-center" role="status">
-      <span className="size-8 animate-spin rounded-full border-4 border-linha border-t-indigo" aria-label="Carregando" />
+      <span className="size-8 animate-spin rounded-full border-4 border-linha border-t-ink" aria-label="Carregando" />
     </div>
   );
 }
@@ -71,7 +71,7 @@ export function Modal({ titulo, children, onFechar }: { titulo: string; children
   return (
     <div className="fixed inset-0 z-[1000] grid place-items-center bg-asfalto/50 p-4" onClick={onFechar} role="dialog" aria-modal aria-label={titulo}>
       <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <h2 className="mb-4 font-cond text-2xl font-bold text-indigo">{titulo}</h2>
+        <h2 className="mb-4 font-cond text-2xl font-bold text-ink">{titulo}</h2>
         {children}
       </div>
     </div>

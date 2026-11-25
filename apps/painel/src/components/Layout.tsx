@@ -20,12 +20,12 @@ export function Layout() {
 
   return (
     <div className="flex min-h-dvh">
-      <aside className="denim sticky top-0 hidden h-dvh w-60 shrink-0 flex-col text-white md:flex">
+      <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-linha bg-white text-ink md:flex">
         <div className="flex items-center gap-2.5 px-5 py-5">
           <img src="/icone.svg" alt="" className="h-9" />
           <div>
-            <p className="font-cond text-xl font-bold leading-none">MOTORIZE</p>
-            <p className="text-xs text-white/70">Painel municipal · Toritama</p>
+            <p className="font-cond text-xl font-extrabold leading-none">Motori<span className="text-motor">ze</span></p>
+            <p className="mt-0.5 text-xs text-cinza">Painel municipal · Toritama</p>
           </div>
         </div>
         <nav className="flex flex-col gap-0.5 px-3" aria-label="Seções">
@@ -35,18 +35,18 @@ export function Layout() {
               to={i.to}
               end={i.to === '/'}
               className={({ isActive }) =>
-                `rounded-lg px-3 py-2.5 font-medium ${isActive ? 'bg-white/12 text-white shadow-[inset_3px_0_0_var(--color-refletivo)]' : 'text-white/75 hover:bg-white/6 hover:text-white'}`
+                `rounded-full px-4 py-2.5 font-semibold ${isActive ? 'bg-ink text-white shadow-[inset_4px_0_0_var(--color-refletivo)]' : 'text-ink/70 hover:bg-neve hover:text-ink'}`
               }
             >
               {i.rotulo}
             </NavLink>
           ))}
         </nav>
-        <div className="mt-auto border-t border-white/10 px-5 py-4">
-          <p className="font-semibold">{u.nome}</p>
-          <p className="text-sm text-white/70">{PAPEIS[u.papel]}</p>
+        <div className="mt-auto border-t border-linha px-5 py-4">
+          <p className="font-bold">{u.nome}</p>
+          <p className="text-sm text-cinza">{PAPEIS[u.papel]}</p>
           <button
-            className="mt-3 text-sm font-semibold text-refletivo hover:underline"
+            className="mt-3 text-sm font-bold text-ink underline decoration-refletivo decoration-2 underline-offset-4 hover:decoration-motor"
             onClick={async () => { await sair(); qc.clear(); nav('/entrar', { replace: true }); }}
           >
             Sair
@@ -56,9 +56,9 @@ export function Layout() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Navegação compacta em telas pequenas (tablet do backoffice) */}
-        <nav className="denim flex gap-1 overflow-x-auto px-3 py-2 md:hidden">
+        <nav className="flex gap-1 overflow-x-auto border-b border-linha bg-white px-3 py-2 md:hidden">
           {ITENS.filter((i) => i.papeis.includes(u.papel)).map((i) => (
-            <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `whitespace-nowrap rounded-md px-3 py-1.5 text-sm ${isActive ? 'bg-white/15 text-white' : 'text-white/75'}`}>
+            <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `whitespace-nowrap rounded-full px-3.5 py-1.5 text-sm font-semibold ${isActive ? 'bg-ink text-white' : 'text-ink/70'}`}>
               {i.rotulo}
             </NavLink>
           ))}

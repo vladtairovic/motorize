@@ -23,13 +23,13 @@ export function Entregador() {
 
   return (
     <>
-      <Link to="/entregadores" className="text-sm font-semibold text-lavado hover:underline">‹ Entregadores</Link>
+      <Link to="/entregadores" className="text-sm font-semibold text-motor hover:underline">‹ Entregadores</Link>
       <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_1.3fr]">
         <section className="painel p-5">
           <div className="flex gap-5">
-            {e.foto ? <img src={e.foto} alt={`Foto de ${e.nome}`} className="h-40 w-32 rounded-lg object-cover ring-1 ring-linha" /> : <div className="grid h-40 w-32 place-items-center rounded-lg bg-lavado-100 text-cinza">Sem foto</div>}
+            {e.foto ? <img src={e.foto} alt={`Foto de ${e.nome}`} className="h-40 w-32 rounded-lg object-cover ring-1 ring-linha" /> : <div className="grid h-40 w-32 place-items-center rounded-lg bg-neve text-cinza">Sem foto</div>}
             <div>
-              <h1 className="font-cond text-3xl font-bold leading-tight text-indigo">{e.nome}</h1>
+              <h1 className="font-cond text-3xl font-bold leading-tight text-ink">{e.nome}</h1>
               {e.nomeSocial && <p className="text-cinza">Nome social: {e.nomeSocial}</p>}
               <p className="mt-1">{ATIVIDADES[e.tipoAtividade] ?? '—'}</p>
               {m && <div className="mt-3 flex items-center gap-2"><Placa placa={m.placa} /><span className="text-cinza">{m.marca} {m.modelo} {m.ano} · {m.cor}</span></div>}
@@ -48,7 +48,7 @@ export function Entregador() {
 
         <div className="space-y-5">
           <section className="painel p-5">
-            <h2 className="mb-3 font-cond text-xl font-bold text-indigo">Credenciais</h2>
+            <h2 className="mb-3 font-cond text-xl font-bold text-ink">Credenciais</h2>
             {!e.credenciais.length && <p className="text-cinza">Nenhuma credencial emitida.</p>}
             <ul className="divide-y divide-linha">
               {e.credenciais.map((c: any) => (
@@ -70,18 +70,18 @@ export function Entregador() {
             </ul>
           </section>
           <section className="painel p-5">
-            <h2 className="mb-3 font-cond text-xl font-bold text-indigo">Solicitações</h2>
+            <h2 className="mb-3 font-cond text-xl font-bold text-ink">Solicitações</h2>
             <ul className="divide-y divide-linha">
               {e.solicitacoes.map((s: any) => (
                 <li key={s.id} className="flex items-center justify-between py-2.5">
-                  <Link to={`/solicitacoes/${s.id}`} className="font-cond text-lg font-semibold text-indigo hover:underline">{s.protocolo}</Link>
+                  <Link to={`/solicitacoes/${s.id}`} className="font-cond text-lg font-semibold text-ink hover:underline">{s.protocolo}</Link>
                   <span className="flex items-center gap-3 text-sm text-cinza">{dataBR(s.criadoEm)} <Status s={s.status} /></span>
                 </li>
               ))}
             </ul>
           </section>
           <section className="painel p-5">
-            <h2 className="mb-3 font-cond text-xl font-bold text-indigo">Consultas em campo</h2>
+            <h2 className="mb-3 font-cond text-xl font-bold text-ink">Consultas em campo</h2>
             {!e.consultas.length ? <p className="text-cinza">Nenhuma consulta registrada.</p> : (
               <table className="tabela text-sm">
                 <thead><tr><th>Quando</th><th>Resultado</th><th>Agente</th><th>Modo</th></tr></thead>

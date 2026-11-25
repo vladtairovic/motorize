@@ -24,21 +24,19 @@ export function Entrar() {
 
   return (
     <div className="grid min-h-dvh md:grid-cols-[1.1fr_1fr]">
-      <section className="denim relative hidden flex-col justify-between p-12 text-white md:flex">
-        <div className="flex items-center gap-3">
-          <img src="/icone.svg" alt="" className="h-11" />
-          <span className="font-cond text-3xl font-bold">MOTORIZE</span>
-        </div>
+      <section className="relative hidden flex-col justify-between border-r border-linha bg-white p-12 md:flex">
+        <img src="/logo.webp" alt="Motorize" className="w-56 select-none" />
         <div>
-          <p className="max-w-md font-cond text-5xl font-bold leading-[0.98]">Cadastro municipal dos motociclistas de entrega</p>
-          <p className="mt-4 max-w-md text-white/80">Análise documental, credenciamento e indicadores para a CTTU e a Prefeitura de Toritama.</p>
+          <span className="mb-5 block h-1.5 w-14 rounded-full bg-refletivo" aria-hidden />
+          <p className="max-w-md font-cond text-5xl font-extrabold leading-[1.02] text-ink">Cadastro municipal dos motociclistas de entrega</p>
+          <p className="mt-4 max-w-md text-cinza">Análise documental, credenciamento e indicadores para a CTTU e a Prefeitura de Toritama.</p>
         </div>
-        <p className="text-sm text-white/60">Acesso restrito a servidores. Todas as ações ficam registradas (LGPD).</p>
+        <p className="text-sm text-cinza">Acesso restrito a servidores. Todas as ações ficam registradas (LGPD).</p>
       </section>
       <main className="flex items-center justify-center p-6">
         <form onSubmit={enviar} className="w-full max-w-sm space-y-5">
           <div>
-            <h1 className="font-cond text-3xl font-bold text-indigo">Entrar no painel</h1>
+            <h1 className="font-cond text-3xl font-bold text-ink">Entrar no painel</h1>
             <p className="mt-1 text-cinza">Use seu e-mail institucional.</p>
           </div>
           {erro && <Erro>{erro}</Erro>}

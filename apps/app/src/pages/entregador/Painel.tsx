@@ -35,7 +35,7 @@ export function Painel() {
 
         {/* Credencial ativa: atalho principal */}
         {c && s.status === 'APROVADA' && (
-          <Link to="/credencial" className="denim costura block rounded-2xl p-5 text-white">
+          <Link to="/credencial" className="escuro costura block rounded-2xl p-5 text-white">
             <div className="flex items-center justify-between">
               <span className="font-cond text-sm font-semibold tracking-wider text-refletivo">CREDENCIAL {c.numero}</span>
               <Selo tom={c.status === 'ATIVA' ? 'ok' : 'erro'}>{c.status === 'ATIVA' ? 'Ativa' : c.status.toLowerCase()}</Selo>
@@ -91,7 +91,7 @@ export function Painel() {
         {s.status === 'RASCUNHO' && (
           <div className="cartao flex flex-col gap-4">
             <div>
-              <p className="font-cond text-2xl font-bold text-indigo">Complete seu cadastro</p>
+              <p className="font-cond text-2xl font-bold text-ink">Complete seu cadastro</p>
               <p className="text-[15px] text-cinza">Pode parar quando quiser, o que você preencheu fica salvo.</p>
             </div>
             <ol className="flex flex-col divide-y divide-linha">

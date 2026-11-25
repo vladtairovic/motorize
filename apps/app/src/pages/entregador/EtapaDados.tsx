@@ -75,7 +75,7 @@ export function EtapaDados() {
           </div>
 
           <div className="cartao flex flex-col gap-4">
-            <p className="font-cond text-xl font-bold text-indigo">Onde você mora ou trabalha</p>
+            <p className="font-cond text-xl font-bold text-ink">Onde você mora ou trabalha</p>
             <Campo rotulo="Bairro" erro={erros.bairro}>
               <select className="entrada" value={f.bairro} onChange={set('bairro')} aria-invalid={!!erros.bairro}>
                 <option value="">Escolha…</option>
@@ -105,12 +105,12 @@ export function EtapaDados() {
           </div>
 
           <div className="cartao flex flex-col gap-4">
-            <p className="font-cond text-xl font-bold text-indigo">Seu trabalho</p>
+            <p className="font-cond text-xl font-bold text-ink">Seu trabalho</p>
             <fieldset className="flex flex-col gap-2">
               <legend className="mb-1.5 text-[15px] font-semibold">Como você trabalha principalmente?</legend>
               {Object.entries(ATIVIDADES).map(([k, v]) => (
-                <label key={k} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-4 ${f.tipoAtividade === k ? 'border-indigo bg-lavado-100' : 'border-linha bg-white'}`}>
-                  <input type="radio" name="ativ" className="size-5 accent-indigo" checked={f.tipoAtividade === k} onChange={() => setF({ ...f, tipoAtividade: k })} />
+                <label key={k} className={`flex min-h-12 items-center gap-3 rounded-xl border-2 px-4 ${f.tipoAtividade === k ? 'border-ink bg-neve' : 'border-linha bg-white'}`}>
+                  <input type="radio" name="ativ" className="size-5 accent-ink" checked={f.tipoAtividade === k} onChange={() => setF({ ...f, tipoAtividade: k })} />
                   {v}
                 </label>
               ))}
@@ -124,7 +124,7 @@ export function EtapaDados() {
                   return (
                     <button type="button" key={pl} aria-pressed={on}
                       onClick={() => setF({ ...f, plataformas: on ? f.plataformas.filter((x: string) => x !== pl) : [...f.plataformas, pl] })}
-                      className={`min-h-11 rounded-full border-2 px-4 text-[15px] font-medium ${on ? 'border-indigo bg-indigo text-white' : 'border-linha bg-white'}`}>
+                      className={`min-h-11 rounded-full border-2 px-4 text-[15px] font-medium ${on ? 'border-ink bg-ink text-white' : 'border-linha bg-white'}`}>
                       {pl}
                     </button>
                   );
@@ -134,7 +134,7 @@ export function EtapaDados() {
           </div>
 
           <div className="cartao flex flex-col gap-4">
-            <p className="font-cond text-xl font-bold text-indigo">Sua CNH</p>
+            <p className="font-cond text-xl font-bold text-ink">Sua CNH</p>
             <Campo rotulo="Número da CNH (registro)" dica="Os 11 números do campo “Nº registro”." erro={erros.cnhNumero}>
               <input className="entrada" inputMode="numeric" value={f.cnhNumero} onChange={set('cnhNumero')} maxLength={14} aria-invalid={!!erros.cnhNumero} />
             </Campo>

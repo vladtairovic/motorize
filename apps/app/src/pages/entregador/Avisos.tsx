@@ -8,7 +8,7 @@ import { dataHoraBR } from '../../lib/util';
 interface Notificacao { id: string; titulo: string; mensagem: string; tipo: string; lidaEm: string | null; criadoEm: string }
 
 const COR: Record<string, string> = {
-  PENDENCIA: 'border-alerta', APROVACAO: 'border-ok', VENCIMENTO: 'border-alerta', COMUNICADO: 'border-lavado', INFO: 'border-linha',
+  PENDENCIA: 'border-alerta', APROVACAO: 'border-ok', VENCIMENTO: 'border-alerta', COMUNICADO: 'border-motor', INFO: 'border-linha',
 };
 
 export function Avisos() {

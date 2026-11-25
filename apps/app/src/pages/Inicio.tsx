@@ -1,6 +1,5 @@
 import { Link, Navigate } from 'react-router';
 import { sessao } from '../lib/api';
-import { Marca } from '../components/ui';
 
 const PASSOS = [
   { t: 'Crie sua conta', d: 'Só CPF, nome, telefone e uma senha.' },
@@ -13,26 +12,27 @@ export function Inicio() {
   if (sessao.ler('entregador')) return <Navigate to="/painel" replace />;
   return (
     <main className="flex min-h-dvh flex-col">
-      <section className="denim relative overflow-hidden px-5 pb-10 pt-6 text-white">
-        <Marca claro />
-        <h1 className="mt-10 font-cond text-[44px] font-bold leading-[0.95]">
+      <section className="bg-white px-5 pb-8 pt-6">
+        <img src="/logo.webp" alt="Motorize" className="mx-auto w-44 select-none" />
+        <h1 className="mt-4 font-cond text-[34px] font-extrabold leading-[1.05] text-ink">
           Credencial oficial do entregador de Toritama
         </h1>
-        <p className="mt-4 max-w-sm text-[17px] text-white/85">
+        <p className="mt-3 max-w-sm text-[17px] text-cinza">
           Cadastro gratuito na Prefeitura. Com a credencial, você comprova na hora que trabalha regularizado.
         </p>
 
         {/* Prévia da credencial — o objeto central do produto */}
-        <div className="costura mt-8 rotate-[-2deg] rounded-2xl bg-white p-4 text-asfalto shadow-2xl" aria-hidden>
-          <div className="flex items-center gap-3">
-            <div className="h-16 w-13 rounded-lg bg-lavado-100" />
+        <div className="escuro costura mt-7 rounded-3xl p-5 text-white" aria-hidden>
+          <p className="font-cond text-xs font-bold tracking-[0.14em] text-refletivo">PREFEITURA DE TORITAMA · CTTU</p>
+          <div className="mt-4 flex items-center gap-3">
+            <div className="h-16 w-13 rounded-xl bg-white/10" />
             <div className="flex-1">
-              <p className="font-cond text-xl font-bold leading-tight text-indigo">Seu nome aqui</p>
-              <p className="text-sm text-cinza">Entregador credenciado</p>
+              <p className="font-cond text-xl font-bold leading-tight">Seu nome aqui</p>
+              <p className="text-sm text-white/70">Entregador credenciado</p>
             </div>
-            <div className="grid size-16 grid-cols-4 gap-0.5 rounded-md bg-white p-1 ring-1 ring-linha">
+            <div className="grid size-16 grid-cols-4 gap-0.5 rounded-lg bg-white p-1.5">
               {Array.from({ length: 16 }).map((_, i) => (
-                <span key={i} className={[0, 2, 5, 6, 9, 11, 12, 15, 3, 10].includes(i) ? 'bg-indigo' : 'bg-transparent'} />
+                <span key={i} className={[0, 2, 5, 6, 9, 11, 12, 15, 3, 10].includes(i) ? 'bg-ink' : 'bg-transparent'} />
               ))}
             </div>
           </div>
@@ -46,11 +46,11 @@ export function Inicio() {
       </section>
 
       <section className="px-5 pb-8">
-        <h2 className="font-cond text-2xl font-bold text-indigo">Como funciona</h2>
+        <h2 className="font-cond text-2xl font-bold text-ink">Como funciona</h2>
         <ol className="mt-4 flex flex-col gap-4">
           {PASSOS.map((p, i) => (
             <li key={p.t} className="flex gap-4">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-refletivo font-cond text-lg font-bold text-indigo">{i + 1}</span>
+              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-refletivo font-cond text-lg font-bold text-ink">{i + 1}</span>
               <div>
                 <p className="font-semibold">{p.t}</p>
                 <p className="text-[15px] text-cinza">{p.d}</p>

@@ -15,15 +15,15 @@ export function Acompanhar() {
       <main className="flex flex-col gap-4 p-4">
         <div className="cartao">
           <p className="text-sm text-cinza">Protocolo</p>
-          <p className="font-cond text-3xl font-bold tracking-wide text-indigo">{s.protocolo}</p>
+          <p className="font-cond text-3xl font-bold tracking-wide text-ink">{s.protocolo}</p>
           <div className="mt-3"><Selo tom={st.tom}>{st.rotulo}</Selo></div>
         </div>
         <section className="cartao">
-          <h2 className="mb-4 font-cond text-xl font-bold text-indigo">Histórico</h2>
+          <h2 className="mb-4 font-cond text-xl font-bold text-ink">Histórico</h2>
           <ol className="relative ml-2 border-l-2 border-linha">
             {s.eventos.map((ev, i) => {
               const e = STATUS_SOL[ev.status];
-              const cor = { neutro: 'bg-cinza', info: 'bg-lavado', alerta: 'bg-alerta', ok: 'bg-ok', erro: 'bg-erro' }[e.tom];
+              const cor = { neutro: 'bg-cinza', info: 'bg-motor', alerta: 'bg-alerta', ok: 'bg-ok', erro: 'bg-erro' }[e.tom];
               return (
                 <li key={ev.id} className="relative mb-5 pl-6 last:mb-0">
                   <span className={`absolute -left-[9px] top-1 size-4 rounded-full ring-4 ring-white ${cor} ${i === 0 ? 'scale-125' : ''}`} />

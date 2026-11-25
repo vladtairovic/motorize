@@ -123,7 +123,7 @@ export function Campo() {
       <Topo
         titulo="Fiscalização"
         voltar={modo !== 'inicio' ? true : undefined}
-        acao={<button className="px-3 text-sm font-semibold text-refletivo" onClick={async () => { await sair('agente'); nav('/agente/entrar', { replace: true }); }}>Sair</button>}
+        acao={<button className="px-3 text-sm font-bold text-ink underline decoration-refletivo decoration-2 underline-offset-4" onClick={async () => { await sair('agente'); nav('/agente/entrar', { replace: true }); }}>Sair</button>}
       />
 
       {modo === 'inicio' && (
@@ -185,7 +185,7 @@ export function Campo() {
                 <div className="cartao flex gap-4">
                   <FotoPessoa src={res.dados.foto} nome={res.dados.nome} className="h-36 w-28 shrink-0 rounded-xl" />
                   <div className="flex min-w-0 flex-col gap-1.5">
-                    <p className="font-cond text-2xl font-bold leading-tight text-indigo">{res.dados.nome}</p>
+                    <p className="font-cond text-2xl font-bold leading-tight text-ink">{res.dados.nome}</p>
                     {res.dados.tipoAtividade && <p className="text-sm text-cinza">{ATIVIDADES[res.dados.tipoAtividade]}</p>}
                     {res.dados.placa && <div><Placa placa={res.dados.placa} /></div>}
                     {res.dados.modelo && <p className="text-[15px]">{res.dados.modelo} · {res.dados.cor}</p>}

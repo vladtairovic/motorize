@@ -68,7 +68,7 @@ export function CriarConta() {
 
         <div className="rounded-xl bg-white p-4 ring-1 ring-linha">
           <label className="flex items-start gap-3">
-            <input type="checkbox" className="mt-1 size-6 accent-indigo" checked={f.aceiteTermo}
+            <input type="checkbox" className="mt-1 size-6 accent-ink" checked={f.aceiteTermo}
               onChange={(e) => setF({ ...f, aceiteTermo: e.target.checked })} />
             <span className="text-[15px]">
               Concordo que a Prefeitura use meus dados para o cadastro e a credencial, como explica o termo.

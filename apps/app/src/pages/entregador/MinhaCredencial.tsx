@@ -64,7 +64,7 @@ export function MinhaCredencial() {
     return (
       <button className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-white p-6" onClick={() => setQrGrande(false)} aria-label="Fechar QR ampliado">
         <Qr valor={c.token} tamanho={Math.min(window.innerWidth - 48, 420)} />
-        <p className="font-cond text-2xl font-bold text-indigo">{c.numero}</p>
+        <p className="font-cond text-2xl font-bold text-ink">{c.numero}</p>
         <p className="text-cinza">Toque para fechar</p>
       </button>
     );
@@ -80,7 +80,7 @@ export function MinhaCredencial() {
           </Aviso>
         )}
 
-        <article className={`denim costura overflow-hidden rounded-3xl text-white shadow-xl ${valida ? '' : 'grayscale'}`} aria-label="Credencial municipal">
+        <article className={`escuro costura overflow-hidden rounded-3xl text-white shadow-xl ${valida ? '' : 'grayscale'}`} aria-label="Credencial municipal">
           <header className="flex items-center justify-between px-6 pt-6">
             <div>
               <p className="font-cond text-sm font-semibold tracking-[0.12em] text-refletivo">PREFEITURA DE TORITAMA · CTTU</p>
@@ -106,11 +106,11 @@ export function MinhaCredencial() {
           </div>
 
           <div className="mx-6 mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-white/15 text-center">
-            <div className="bg-indigo/40 px-3 py-2">
+            <div className="bg-ink/40 px-3 py-2">
               <p className="text-xs text-white/70">Número</p>
               <p className="font-cond text-xl font-bold tracking-wide">{c.numero}</p>
             </div>
-            <div className="bg-indigo/40 px-3 py-2">
+            <div className="bg-ink/40 px-3 py-2">
               <p className="text-xs text-white/70">Válida até</p>
               <p className="font-cond text-xl font-bold">{dataBR(c.validaAte)}</p>
             </div>
@@ -119,7 +119,7 @@ export function MinhaCredencial() {
           <button onClick={() => setQrGrande(true)} className="mx-auto my-6 block rounded-2xl bg-white p-3" aria-label="Ampliar QR Code">
             <Qr valor={c.token} tamanho={210} />
           </button>
-          <p className={`py-3 text-center font-cond text-lg font-bold ${valida ? 'bg-refletivo text-indigo' : 'bg-erro text-white'}`}>
+          <p className={`py-3 text-center font-cond text-lg font-bold ${valida ? 'bg-refletivo text-ink' : 'bg-erro text-white'}`}>
             {valida ? 'CREDENCIADO' : vencida ? 'VENCIDA' : c.status}
           </p>
         </article>

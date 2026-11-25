@@ -7,10 +7,10 @@ import { api, baixar, sessao } from '../lib/api';
 import { Cabecalho, Carregando, Erro } from '../components/ui';
 import { ATIVIDADES, RESULTADO, dataHoraBR } from '../lib/util';
 
-// Paleta validada (scripts/validate_palette.js): lavado + âmbar; contraste baixo do âmbar é compensado por legenda, tooltip e tabela.
-const S1 = '#3D5A98';
-const S2 = '#D9A300';
-const EIXO = { fontSize: 12, fill: '#5d6370' };
+// Paleta validada (scripts/validate_palette.js): motor + âmbar; contraste baixo do âmbar é compensado por legenda, tooltip e tabela.
+const S1 = '#0A0A0A';
+const S2 = '#FFC800';
+const EIXO = { fontSize: 12, fill: '#6A6A6A' };
 
 interface Ind {
   resumo: Record<string, any>;
@@ -28,11 +28,11 @@ function Bloco({ titulo, sub, children, tabela }: { titulo: string; sub?: string
     <section className="painel p-5">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
-          <h2 className="font-cond text-xl font-bold text-indigo">{titulo}</h2>
+          <h2 className="font-cond text-xl font-bold text-ink">{titulo}</h2>
           {sub && <p className="text-sm text-cinza">{sub}</p>}
         </div>
         {tabela && (
-          <button className="text-sm font-semibold text-lavado hover:underline" onClick={() => setVerTabela(!verTabela)}>
+          <button className="text-sm font-semibold text-motor hover:underline" onClick={() => setVerTabela(!verTabela)}>
             {verTabela ? 'Ver gráfico' : 'Ver tabela'}
           </button>
         )}
@@ -50,7 +50,7 @@ function Indicador({ rotulo, valor, detalhe, to, alerta }: { rotulo: string; val
       {detalhe && <p className="text-[13px] text-cinza">{detalhe}</p>}
     </>
   );
-  return to ? <Link to={to} className="painel block p-4 hover:ring-lavado/50">{corpo}</Link> : <div className="painel p-4">{corpo}</div>;
+  return to ? <Link to={to} className="painel block p-4 hover:ring-motor/50">{corpo}</Link> : <div className="painel p-4">{corpo}</div>;
 }
 
 function TabelaSimples({ cols, linhas }: { cols: string[]; linhas: (string | number)[][] }) {
@@ -87,7 +87,7 @@ export function VisaoGeral() {
       />
 
       {/* Indicador principal: adesão ao cadastro oficial */}
-      <section className="denim mb-5 rounded-xl p-6 text-white">
+      <section className="escuro mb-5 rounded-xl p-6 text-white">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-white/75">Motociclistas credenciados</p>
@@ -105,7 +105,7 @@ export function VisaoGeral() {
         <p className="mt-2 text-sm text-white/80">Adesão de {fmt(r.adesao_pct, '%')}</p>
       </section>
 
-      <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-6">
+      <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
         <Indicador rotulo="Aguardando análise" valor={r.fila} detalhe={`${r.em_analise} em análise agora`} to={papel !== 'GESTOR' ? '/solicitacoes' : undefined} alerta={r.fila > 10} />
         <Indicador rotulo="Com pendência" valor={r.pendencia} detalhe="Aguardando o entregador" />
         <Indicador rotulo="Tempo até decisão" valor={r.horas_ate_decisao ? `${fmt(r.horas_ate_decisao)} h` : '—'} detalhe="Média das aprovadas" />
@@ -122,10 +122,10 @@ export function VisaoGeral() {
         >
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={d.evolucao} barGap={2} margin={{ left: -18, right: 4, top: 4 }}>
-              <CartesianGrid vertical={false} stroke="#eceef2" />
-              <XAxis dataKey="semana" tick={EIXO} tickLine={false} axisLine={{ stroke: '#dfe2e8' }} />
+              <CartesianGrid vertical={false} stroke="#EFEFEF" />
+              <XAxis dataKey="semana" tick={EIXO} tickLine={false} axisLine={{ stroke: '#E5E5E5' }} />
               <YAxis allowDecimals={false} tick={EIXO} tickLine={false} axisLine={false} />
-              <Tooltip cursor={{ fill: 'rgba(61,90,152,.06)' }} contentStyle={{ borderRadius: 8, borderColor: '#dfe2e8' }} />
+              <Tooltip cursor={{ fill: 'rgba(10,10,10,.05)' }} contentStyle={{ borderRadius: 8, borderColor: '#E5E5E5' }} />
               <Legend iconType="circle" wrapperStyle={{ fontSize: 13 }} />
               <Bar dataKey="enviadas" name="Enviadas" fill={S1} radius={[4, 4, 0, 0]} maxBarSize={18} />
               <Bar dataKey="aprovadas" name="Aprovadas" fill={S2} radius={[4, 4, 0, 0]} maxBarSize={18} />
@@ -138,7 +138,7 @@ export function VisaoGeral() {
             <MapContainer center={[-8.0067, -36.0567]} zoom={14} scrollWheelZoom={false} className="size-full">
               <TileLayer attribution='&copy; OpenStreetMap' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {d.mapa.map((m, i) => (
-                <CircleMarker key={i} center={[m.lat, m.lng]} radius={6 + Math.sqrt(m.total) * 4} pathOptions={{ color: '#fff', weight: 2, fillColor: S1, fillOpacity: 0.75 }}>
+                <CircleMarker key={i} center={[m.lat, m.lng]} radius={6 + Math.sqrt(m.total) * 4} pathOptions={{ color: '#fff', weight: 2, fillColor: '#E30613', fillOpacity: 0.75 }}>
                   <MapTip>{m.total} entregadores nesta área</MapTip>
                 </CircleMarker>
               ))}
@@ -152,10 +152,10 @@ export function VisaoGeral() {
         >
           <ResponsiveContainer width="100%" height={Math.max(220, d.porBairro.length * 34)}>
             <BarChart data={d.porBairro} layout="vertical" barGap={2} margin={{ left: 8, right: 16 }}>
-              <CartesianGrid horizontal={false} stroke="#eceef2" />
+              <CartesianGrid horizontal={false} stroke="#EFEFEF" />
               <XAxis type="number" allowDecimals={false} tick={EIXO} tickLine={false} axisLine={false} />
               <YAxis type="category" dataKey="bairro" width={120} tick={EIXO} tickLine={false} axisLine={false} />
-              <Tooltip cursor={{ fill: 'rgba(61,90,152,.06)' }} contentStyle={{ borderRadius: 8, borderColor: '#dfe2e8' }} />
+              <Tooltip cursor={{ fill: 'rgba(10,10,10,.05)' }} contentStyle={{ borderRadius: 8, borderColor: '#E5E5E5' }} />
               <Legend iconType="circle" wrapperStyle={{ fontSize: 13 }} />
               <Bar dataKey="cadastrados" name="Cadastrados" fill={S1} radius={[0, 4, 4, 0]} maxBarSize={12} />
               <Bar dataKey="credenciados" name="Credenciados" fill={S2} radius={[0, 4, 4, 0]} maxBarSize={12} />
@@ -171,7 +171,7 @@ export function VisaoGeral() {
                 return (
                   <li key={a.atividade} className="grid grid-cols-[130px_1fr_36px] items-center gap-3 text-sm">
                     <span>{ATIVIDADES[a.atividade] ?? a.atividade}</span>
-                    <span className="h-2.5 rounded-r bg-lavado" style={{ width: `${(a.total / max) * 100}%` }} />
+                    <span className="h-2.5 rounded-r bg-motor" style={{ width: `${(a.total / max) * 100}%` }} />
                     <span className="text-right font-semibold">{a.total}</span>
                   </li>
                 );
@@ -189,7 +189,7 @@ export function VisaoGeral() {
       </div>
 
       <section className="painel mt-5 overflow-x-auto">
-        <h2 className="px-5 pt-5 font-cond text-xl font-bold text-indigo">Últimas consultas de agentes</h2>
+        <h2 className="px-5 pt-5 font-cond text-xl font-bold text-ink">Últimas consultas de agentes</h2>
         <table className="tabela mt-3">
           <thead><tr><th>Quando</th><th>Entregador</th><th>Credencial</th><th>Resultado</th><th>Agente</th><th>Modo</th></tr></thead>
           <tbody>

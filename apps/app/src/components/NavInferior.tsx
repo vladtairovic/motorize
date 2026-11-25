@@ -22,7 +22,7 @@ export function NavInferior({ avisos = 0 }: { avisos?: number }) {
             <NavLink
               to={it.to}
               className={({ isActive }) =>
-                `relative flex flex-col items-center gap-0.5 pt-2 text-[13px] font-semibold ${isActive ? 'text-indigo' : 'text-cinza'}`
+                `relative flex flex-col items-center gap-0.5 pt-2 text-[13px] font-semibold ${isActive ? 'text-ink' : 'text-cinza'}`
               }
             >
               {({ isActive }) => (

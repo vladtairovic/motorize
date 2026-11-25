@@ -26,7 +26,7 @@ export function Comunicados() {
       <Cabecalho titulo="Comunicados" sub="Mensagens oficiais que aparecem na aba Avisos do app do entregador." />
       <div className="grid gap-5 lg:grid-cols-[420px_1fr]">
         <form onSubmit={submeter} className="painel space-y-4 self-start p-5">
-          <h2 className="font-cond text-xl font-bold text-indigo">Novo comunicado</h2>
+          <h2 className="font-cond text-xl font-bold text-ink">Novo comunicado</h2>
           {enviar.error && <Erro>{enviar.error.message}</Erro>}
           {ok && <p className="rounded-lg bg-ok-100 px-3 py-2 font-semibold text-ok" role="status">{ok}</p>}
           <label className="block"><span className="rotulo">Título</span>
@@ -46,7 +46,7 @@ export function Comunicados() {
         </form>
 
         <section className="painel">
-          <h2 className="px-5 pt-5 font-cond text-xl font-bold text-indigo">Enviados</h2>
+          <h2 className="px-5 pt-5 font-cond text-xl font-bold text-ink">Enviados</h2>
           {!lista.data?.length ? <Vazio>Nenhum comunicado enviado ainda.</Vazio> : (
             <ul className="divide-y divide-linha">
               {lista.data.map((c, i) => (

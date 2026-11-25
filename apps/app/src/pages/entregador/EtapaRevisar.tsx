@@ -8,7 +8,7 @@ function Bloco({ titulo, editar, children }: { titulo: string; editar?: string; 
   return (
     <section className="cartao">
       <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-cond text-xl font-bold text-indigo">{titulo}</h2>
+        <h2 className="font-cond text-xl font-bold text-ink">{titulo}</h2>
         {editar && <Link to={editar} className="btn-texto text-[15px]">Alterar</Link>}
       </div>
       <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-[15px]">{children}</dl>

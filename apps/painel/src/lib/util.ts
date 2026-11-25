@@ -1,6 +1,6 @@
 export const STATUS_SOL: Record<string, { rotulo: string; cls: string }> = {
   RASCUNHO: { rotulo: 'Em preenchimento', cls: 'bg-linha text-asfalto' },
-  ENVIADA: { rotulo: 'Aguardando análise', cls: 'bg-lavado-100 text-indigo' },
+  ENVIADA: { rotulo: 'Aguardando análise', cls: 'bg-neve text-ink' },
   EM_ANALISE: { rotulo: 'Em análise', cls: 'bg-refletivo-100 text-[#6b5200]' },
   PENDENCIA: { rotulo: 'Com pendência', cls: 'bg-alerta-100 text-alerta' },
   APROVADA: { rotulo: 'Aprovada', cls: 'bg-ok-100 text-ok' },

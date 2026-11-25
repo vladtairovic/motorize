@@ -48,7 +48,7 @@ export function Solicitacoes() {
                 role="tab"
                 aria-selected={status === a.id}
                 onClick={() => mudar('status', a.id)}
-                className={`whitespace-nowrap border-b-[3px] px-3 pb-2.5 pt-1 font-semibold ${status === a.id ? 'border-refletivo text-indigo' : 'border-transparent text-cinza hover:text-indigo'}`}
+                className={`whitespace-nowrap border-b-[3px] px-3 pb-2.5 pt-1 font-semibold ${status === a.id ? 'border-refletivo text-ink' : 'border-transparent text-cinza hover:text-ink'}`}
               >
                 {a.rotulo}
               </button>
@@ -72,7 +72,7 @@ export function Solicitacoes() {
                   <tbody>
                     {data.itens.map((s: any) => (
                       <tr key={s.id}>
-                        <td className="font-cond text-base font-semibold">{s.protocolo}{s.tipo === 'RENOVACAO' && <span className="ml-1.5 text-xs font-sans text-lavado">renovação</span>}</td>
+                        <td className="font-cond text-base font-semibold">{s.protocolo}{s.tipo === 'RENOVACAO' && <span className="ml-1.5 text-xs font-sans text-motor">renovação</span>}</td>
                         <td>
                           <p className="font-medium">{s.entregadorNome}</p>
                           <p className="text-[13px] text-cinza">{s.bairro ?? '—'}</p>

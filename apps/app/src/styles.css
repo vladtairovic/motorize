@@ -1,81 +1,74 @@
 @import 'tailwindcss';
-@import '@fontsource/barlow/400.css';
-@import '@fontsource/barlow/500.css';
-@import '@fontsource/barlow/600.css';
-@import '@fontsource/barlow-condensed/600.css';
-@import '@fontsource/barlow-condensed/700.css';
+@import '@fontsource-variable/plus-jakarta-sans';
 
 /*
-  Identidade MOTORIZE: o jeans de Toritama + o amarelo refletivo do colete.
-  Barlow nasce da sinalização viária — conversa com placa e trânsito.
+  Identidade MOTORIZE (redesenho): preto e branco como base, amarelo para a ação
+  principal e vermelho como acento da marca. Superfícies planas, bordas de 1px,
+  sem sombras pesadas, tipografia geométrica no mesmo espírito do logo.
 */
 @theme {
-  --color-indigo: #1e2a5a;      /* denim cru */
-  --color-indigo-700: #2a3a78;
-  --color-lavado: #3d5a98;      /* denim lavado */
-  --color-lavado-100: #e3e8f4;
-  --color-refletivo: #f2c200;   /* colete refletivo */
-  --color-refletivo-100: #fff4c2;
-  --color-asfalto: #22252b;
-  --color-cinza: #5d6370;
-  --color-linha: #d9dce3;
-  --color-papel: #f3f4f7;
-  --color-ok: #1f7a4f;
-  --color-ok-100: #dcf1e6;
-  --color-alerta: #b4561a;
-  --color-alerta-100: #fbe7d6;
-  --color-erro: #b3261e;
-  --color-erro-100: #f9dedc;
+  --color-ink: #0a0a0a;          /* preto do logo */
+  --color-ink-700: #2a2a2a;
+  --color-motor: #e30613;        /* vermelho do logo */
+  --color-neve: #f2f2f2;         /* cinza claríssimo de apoio */
+  --color-refletivo: #ffc800;    /* amarelo do logo */
+  --color-refletivo-100: #fff5cc;
+  --color-asfalto: #0a0a0a;
+  --color-cinza: #6a6a6a;
+  --color-linha: #e5e5e5;
+  --color-papel: #fafafa;
+  --color-ok: #15803d;
+  --color-ok-100: #e3f4e8;
+  --color-alerta: #8a5d00;
+  --color-alerta-100: #fff0c2;
+  --color-erro: #c4000e;
+  --color-erro-100: #fde8ea;
 
-  --font-sans: 'Barlow', system-ui, sans-serif;
-  --font-cond: 'Barlow Condensed', 'Barlow', sans-serif;
+  --font-sans: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  --font-cond: 'Plus Jakarta Sans Variable', system-ui, sans-serif; /* títulos */
 }
 
 html { -webkit-tap-highlight-color: transparent; }
 body {
   @apply bg-papel text-asfalto font-sans antialiased;
-  font-size: 17px; /* leitura confortável no sol, para público com baixa visão */
+  font-size: 16px; /* legível ao sol; entradas e botões seguem maiores abaixo */
   line-height: 1.5;
 }
-:focus-visible { outline: 3px solid var(--color-refletivo); outline-offset: 2px; }
+h1, h2, h3, .font-cond { letter-spacing: -0.025em; }
+:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 font-semibold transition-colors disabled:opacity-50 select-none;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 font-bold transition-colors disabled:opacity-50 select-none;
   min-height: 52px;
 }
 
 @layer components {
-  .btn-primario { @apply btn bg-indigo text-white hover:bg-indigo-700 active:bg-asfalto; }
-  .btn-destaque { @apply btn bg-refletivo text-indigo hover:brightness-95; }
-  .btn-secundario { @apply btn bg-white text-indigo border-2 border-indigo/15 hover:border-indigo/40; }
-  .btn-texto { @apply inline-flex items-center gap-1 font-semibold text-lavado underline-offset-4 hover:underline; }
+  .btn-primario { @apply btn bg-ink text-white hover:bg-ink-700 active:bg-black; }
+  .btn-destaque { @apply btn bg-refletivo text-ink hover:brightness-95 active:brightness-90; }
+  .btn-secundario { @apply btn bg-white text-ink border border-ink/20 hover:border-ink; }
+  .btn-texto { @apply inline-flex items-center gap-1 font-bold text-ink underline decoration-refletivo decoration-2 underline-offset-4 hover:decoration-motor; }
 
   .campo { @apply flex flex-col gap-1.5; }
-  .campo > span { @apply text-[15px] font-semibold text-asfalto; }
+  .campo > span { @apply text-sm font-bold text-asfalto; }
   .campo small { @apply text-sm text-cinza; }
   .entrada {
-    @apply w-full rounded-xl border-2 border-linha bg-white px-4 text-asfalto placeholder:text-cinza/60
-           focus:border-lavado focus:outline-none;
+    @apply w-full rounded-xl border border-ink/20 bg-white px-4 text-asfalto placeholder:text-cinza/60
+           focus:border-ink focus:outline-none focus:ring-4 focus:ring-refletivo/50;
     min-height: 52px;
     font-size: 17px;
   }
   .entrada[aria-invalid='true'] { @apply border-erro; }
-  .erro-campo { @apply text-sm font-medium text-erro; }
+  .erro-campo { @apply text-sm font-semibold text-erro; }
 
-  .cartao { @apply rounded-2xl bg-white p-5 shadow-[0_1px_0_rgba(30,42,90,.08)] ring-1 ring-linha/70; }
+  .cartao { @apply rounded-2xl border border-linha bg-white p-5; }
 
-  .titulo-tela { @apply font-cond text-[32px] font-bold leading-none text-indigo; }
+  .titulo-tela { @apply font-cond text-[30px] font-extrabold leading-tight text-ink; }
 
-  /* Costura de jeans: borda tracejada amarela usada só na credencial e na marca */
-  .costura { outline: 2px dashed var(--color-refletivo); outline-offset: -10px; }
+  /* Fio amarelo no topo: marca discreta da credencial e dos destaques */
+  .costura { box-shadow: inset 0 4px 0 var(--color-refletivo); }
 
-  .denim {
-    background-color: var(--color-indigo);
-    background-image:
-      repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px),
-      repeating-linear-gradient(45deg, rgba(0,0,0,.08) 0 1px, transparent 1px 4px);
-  }
+  .escuro { background-color: var(--color-ink); }
 
   .placa {
     @apply inline-flex flex-col items-stretch overflow-hidden rounded-md border-2 border-asfalto bg-white font-cond font-bold text-asfalto;
